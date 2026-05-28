@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CS Department Campus Survey – GMU</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <!-- Google Fonts -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@300;400;600&display=swap"/>
+
+  <style>
+    /* ── VARIABLES ── */
+    :root {
+      --gmu-green:  #006633;
+      --gmu-yellow: #FFCC33;
+      --light-gray: #f2f4f3;
+      --red-req:    #c0392b;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: var(--light-gray);
+      color: #222;
+    }
+
+    /* ── Required h1 rule ── */
+    h1 { color: var(--gmu-green); }
+
+    /* ── Custom reusable class ── */
+    .gmu-highlight {
+      background: var(--gmu-yellow);
+      color: var(--gmu-green);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* ── TOP BAR ── */
+    .gmu-topbar {
+      background: var(--gmu-green);
+      color: #fff;
+      padding: 9px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge-gmu {
+      background: var(--gmu-yellow);
+      color: var(--gmu-green);
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: .85rem;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar-gmu { background: var(--gmu-yellow) !important; border-bottom: 3px solid var(--gmu-green); }
+    .navbar-gmu .nav-link { color: var(--gmu-green) !important; font-weight: 600; }
+    .navbar-gmu .nav-link:hover,
+    .navbar-gmu .nav-link.active {
+      background: var(--gmu-green) !important; color: #fff !important; border-radius: 4px;
+    }
+    .navbar-gmu .navbar-brand {
+      color: var(--gmu-green) !important;
+      font-weight: 800;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── HEADING BOX (5px solid green border + box-shadow) ── */
+    .heading-box {
+      border: 5px solid var(--gmu-green);
+      box-shadow: 6px 6px 0 var(--gmu-yellow), 8px 8px 0 var(--gmu-green);
+      background: #fff;
+      padding: 28px 36px;
+      margin: 32px auto;
+      max-width: 860px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .heading-box h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 6px;
+    }
+    .heading-box p { color: #555; font-size: .98rem; }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 36px 40px;
+      box-shadow: 0 2px 18px rgba(0,102,51,.10);
+      border-top: 5px solid var(--gmu-green);
+      margin-bottom: 40px;
+    }
+
+    /* ── SECTION HEADER within form ── */
+    .form-section-title {
+      color: var(--gmu-green);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      border-bottom: 2px solid var(--gmu-yellow);
+      padding-bottom: 8px;
+      margin-top: 28px;
+      margin-bottom: 18px;
+    }
+
+    /* ── REQUIRED INDICATOR ── */
+    .req-star {
+      color: var(--red-req);
+      font-weight: 700;
+      margin-left: 2px;
+    }
+    .req-legend {
+      font-size: .88rem;
+      color: var(--red-req);
+      margin-bottom: 20px;
+    }
+    /* Red left border on required inputs */
+    input[required], select[required], textarea[required] {
+      border-left: 3px solid var(--red-req) !important;
+    }
+    input[required]:valid, select[required]:valid, textarea[required]:valid {
+      border-left: 3px solid var(--gmu-green) !important;
+    }
+
+    /* ── Bootstrap color overrides ── */
+    .btn-gmu {
+      background: var(--gmu-green);
+      color: #fff;
+      border: none;
+      padding: 12px 40px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 4px 12px rgba(0,102,51,.3);
+    }
+    .btn-gmu:hover { background: #004422; color: #fff; transform: translateY(-2px); }
+
+    .btn-reset {
+      background: transparent;
+      border: 2px solid var(--gmu-green);
+      color: var(--gmu-green);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .btn-reset:hover { background: var(--gmu-green); color: #fff; }
+
+    /* checkbox / radio styling */
+    .form-check-input:checked {
+      background-color: var(--gmu-green);
+      border-color: var(--gmu-green);
+    }
+    .form-check-label { cursor: pointer; }
+
+    /* focus ring */
+    .form-control:focus, .form-select:focus {
+      border-color: var(--gmu-green);
+      box-shadow: 0 0 0 .2rem rgba(0,102,51,.18);
+    }
+
+    footer {
+      background: var(--gmu-green);
+      color: rgba(255,255,255,.8);
+      text-align: center;
+      padding: 20px;
+      font-size: .88rem;
+    }
+    footer strong { color: var(--gmu-yellow); }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="gmu-topbar">
+    <span class="badge-gmu">GMU</span>
+    <span>George Mason University &mdash; Department of Computer Science</span>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-gmu px-3">
+    <a class="navbar-brand" href="index.html">SWE 642</a>
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="cs-department.html">CS Department</a></li>
+        <li class="nav-item"><a class="nav-link active" href="survey.html">Campus Survey</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Heading Box -->
+  <div class="heading-box">
+    <h1>CS Department Campus Survey</h1>
+    <p>Thank you for visiting George Mason University! Please share your feedback below.</p>
+  </div>
+
+  <div class="container" style="max-width:860px;">
+    <div class="form-card">
+
+      <!-- Required field legend -->
+      <p class="req-legend">Fields marked with <span class="req-star">*</span> are required.</p>
+
+      <!--
+        autocomplete="on" enables browser autofill for the entire form.
+        id="surveyForm" for JS reference.
+      -->
+      <form id="surveyForm" autocomplete="on" novalidate>
+
+        <!-- ── SECTION 1: Personal Information ── -->
+        <h2 class="form-section-title">Personal Information</h2>
+
+        <div class="row g-3">
+
+          <!-- Username -->
+          <div class="col-md-6">
+            <label for="username" class="form-label">
+              Username <span class="req-star">*</span>
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              placeholder="e.g. jsmith42"
+              autocomplete="username"
+              required
+            />
+          </div>
+
+          <!-- Date of Survey -->
+          <div class="col-md-6">
+            <label for="surveyDate" class="form-label">
+              Date of Survey <span class="req-star">*</span>
+            </label>
+            <input
+              type="date"
+              id="surveyDate"
+              name="surveyDate"
+              class="form-control"
+              placeholder="MM/DD/YYYY"
+              required
+            />
+          </div>
+
+          <!-- Street Address -->
+          <div class="col-12">
+            <label for="streetAddress" class="form-label">
+              Street Address <span class="req-star">*</span>
+            </label>
+            <input
+              type="text"
+              id="streetAddress"
+              name="streetAddress"
+              class="form-control"
+              placeholder="e.g. 4400 University Drive"
+              autocomplete="street-address"
+              required
+            />
+          </div>
+
+          <!-- City -->
+          <div class="col-md-5">
+            <label for="city" class="form-label">
+              City <span class="req-star">*</span>
+            </label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              class="form-control"
+              placeholder="e.g. Fairfax"
+              autocomplete="address-level2"
+              required
+            />
+          </div>
+
+          <!-- State -->
+          <div class="col-md-4">
+            <label for="state" class="form-label">
+              State <span class="req-star">*</span>
+            </label>
+            <input
+              type="text"
+              id="state"
+              name="state"
+              class="form-control"
+              placeholder="e.g. VA"
+              autocomplete="address-level1"
+              maxlength="2"
+              required
+            />
+          </div>
+
+          <!-- ZIP -->
+          <div class="col-md-3">
+            <label for="zip" class="form-label">
+              ZIP Code <span class="req-star">*</span>
+            </label>
+            <input
+              type="text"
+              id="zip"
+              name="zip"
+              class="form-control"
+              placeholder="e.g. 22030"
+              autocomplete="postal-code"
+              pattern="\d{5}(-\d{4})?"
+              title="Enter a 5-digit ZIP, optionally followed by -4 digits"
+              required
+            />
+          </div>
+
+          <!-- Phone -->
+          <div class="col-md-6">
+            <label for="telephone" class="form-label">
+              Telephone Number <span class="req-star">*</span>
+            </label>
+            <input
+              type="tel"
+              id="telephone"
+              name="telephone"
+              class="form-control"
+              placeholder="e.g. (703) 555-0100"
+              autocomplete="tel"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6">
+            <label for="email" class="form-label">
+              Email Address <span class="req-star">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="e.g. student@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <!-- URL -->
+          <div class="col-12">
+            <label for="website" class="form-label">
+              Personal / LinkedIn URL
+            </label>
+            <input
+              type="url"
+              id="website"
+              name="website"
+              class="form-control"
+              placeholder="e.g. https://linkedin.com/in/yourname"
+              autocomplete="url"
+            />
+          </div>
+
+        </div><!-- /row -->
+
+        <!-- ── SECTION 2: High School Graduation ── -->
+        <h2 class="form-section-title">High School Graduation</h2>
+
+        <div class="row g-3">
+          <!-- Graduation Month (datalist) -->
+          <div class="col-md-6">
+            <label for="gradMonth" class="form-label">Graduation Month</label>
+            <input
+              type="text"
+              id="gradMonth"
+              name="gradMonth"
+              class="form-control"
+              placeholder="Type or select a month"
+              list="monthList"
+              autocomplete="off"
+            />
+            <datalist id="monthList">
+              <option value="January"/>
+              <option value="February"/>
+              <option value="March"/>
+              <option value="April"/>
+              <option value="May"/>
+              <option value="June"/>
+              <option value="July"/>
+              <option value="August"/>
+              <option value="September"/>
+              <option value="October"/>
+              <option value="November"/>
+              <option value="December"/>
+            </datalist>
+          </div>
+
+          <!-- Graduation Year -->
+          <div class="col-md-6">
+            <label for="gradYear" class="form-label">Graduation Year</label>
+            <input
+              type="number"
+              id="gradYear"
+              name="gradYear"
+              class="form-control"
+              placeholder="e.g. 2023"
+              min="1950"
+              max="2030"
+            />
+          </div>
+        </div>
+
+        <!-- ── SECTION 3: Campus Impressions (Checkboxes) ── -->
+        <h2 class="form-section-title">What Did You Like Most? <small class="text-muted" style="font-size:.8rem;">(select all that apply)</small></h2>
+
+        <div class="row g-2">
+          <div class="col-6 col-md-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="chkStudents" name="liked" value="students"/>
+              <label class="form-check-label" for="chkStudents">Students</label>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="chkLocation" name="liked" value="location"/>
+              <label class="form-check-label" for="chkLocation">Location</label>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="chkCampus" name="liked" value="campus"/>
+              <label class="form-check-label" for="chkCampus">Campus</label>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="chkAtmosphere" name="liked" value="atmosphere"/>
+              <label class="form-check-label" for="chkAtmosphere">Atmosphere</label>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="chkDorm" name="liked" value="dormRooms"/>
+              <label class="form-check-label" for="chkDorm">Dorm Rooms</label>
+            </div>
+          </div>
+          <div class="col-6 col-md-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="chkSports" name="liked" value="sports"/>
+              <label class="form-check-label" for="chkSports">Sports</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 4: How Did You Hear About Us? (Radio buttons) ── -->
+        <h2 class="form-section-title">How Did You Become Interested in GMU? <span class="req-star">*</span></h2>
+
+        <div class="row g-2">
+          <div class="col-6 col-md-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="rdFriends" name="heardFrom" value="friends" required/>
+              <label class="form-check-label" for="rdFriends">Friends</label>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="rdTV" name="heardFrom" value="television"/>
+              <label class="form-check-label" for="rdTV">Television</label>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="rdInternet" name="heardFrom" value="internet"/>
+              <label class="form-check-label" for="rdInternet">Internet</label>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="rdOther" name="heardFrom" value="other"/>
+              <label class="form-check-label" for="rdOther">Other</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SECTION 5: Recommendation Likelihood ── -->
+        <h2 class="form-section-title">Likelihood of Recommending GMU</h2>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="likelihood" class="form-label">
+              How likely are you to recommend GMU to others? <span class="req-star">*</span>
+            </label>
+            <select id="likelihood" name="likelihood" class="form-select" required>
+              <option value="" disabled selected>-- Select an option --</option>
+              <option value="veryLikely">Very Likely</option>
+              <option value="likely">Likely</option>
+              <option value="unlikely">Unlikely</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ── SECTION 6: Additional Comments ── -->
+        <h2 class="form-section-title">Additional Comments</h2>
+
+        <div class="mb-3">
+          <label for="comments" class="form-label">
+            Please share any other thoughts or feedback about your campus visit:
+          </label>
+          <textarea
+            id="comments"
+            name="comments"
+            class="form-control"
+            rows="5"
+            placeholder="e.g. I was impressed by the research labs and the helpfulness of the faculty during the open house…"
+          ></textarea>
+        </div>
+
+        <!-- ── BUTTONS ── -->
+        <hr class="my-4"/>
+        <div class="d-flex gap-3 flex-wrap">
+          <button type="submit" class="btn-gmu">Submit Survey</button>
+          <button type="reset" class="btn-reset">Reset Form</button>
+        </div>
+
+      </form>
+    </div><!-- /form-card -->
+  </div><!-- /container -->
+
+  <footer>
+    <p>&copy; 2026 <strong>George Mason University</strong> &bull; Department of Computer Science &bull; Fairfax, VA 22030</p>
+    <p>
+      <a href="index.html" style="color:var(--gmu-yellow);">← Student Homepage</a>
+      &nbsp;|&nbsp;
+      <a href="cs-department.html" style="color:var(--gmu-yellow);">CS Department Info</a>
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ── Autofocus on first field when page loads ──
+    document.getElementById('username').focus();
+
+    // ── Set today's date as default for survey date ──
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('surveyDate').value = today;
+
+    // ── Bootstrap validation on submit ──
+    document.getElementById('surveyForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!this.checkValidity()) {
+        e.stopPropagation();
+        this.classList.add('was-validated');
+        // Scroll to first invalid field
+        const firstInvalid = this.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        this.classList.add('was-validated');
+        alert('Thank you for completing the CS Department Campus Survey!\n\nYour feedback has been submitted.');
+        this.reset();
+        this.classList.remove('was-validated');
+        document.getElementById('surveyDate').value = today;
+        document.getElementById('username').focus();
+      }
+    });
+  </script>
+</body>
+</html>

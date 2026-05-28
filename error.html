@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Not Found – Chetana Patel</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"/>
+  <style>
+    :root {
+      --gmu-green:  #006633;
+      --gmu-yellow: #FFCC33;
+      --light-gray: #f2f4f3;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--light-gray);
+      color: #1a2620;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* h1 in GMU green — required by assignment */
+    h1 { color: var(--gmu-green); }
+
+    /* Custom reusable class */
+    .gmu-highlight {
+      background: var(--gmu-yellow);
+      color: var(--gmu-green);
+      padding: 1px 7px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    /* ── TOP BAR ── */
+    .gmu-topbar {
+      background: var(--gmu-green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 28px;
+      font-size: .88rem;
+    }
+    .badge-gmu {
+      background: var(--gmu-yellow);
+      color: var(--gmu-green);
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: .82rem;
+    }
+
+    /* ── MAIN ERROR AREA ── */
+    .error-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    /* Big 404 number */
+    .error-code {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(6rem, 20vw, 10rem);
+      color: var(--gmu-green);
+      line-height: 1;
+      position: relative;
+      display: inline-block;
+    }
+    /* Yellow underline accent */
+    .error-code::after {
+      content: '';
+      display: block;
+      height: 6px;
+      background: var(--gmu-yellow);
+      border-radius: 999px;
+      margin-top: 6px;
+    }
+
+    .error-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      color: var(--gmu-green);
+      margin: 24px 0 12px;
+    }
+
+    .error-msg {
+      font-size: 1rem;
+      color: #556659;
+      max-width: 440px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    /* ── NAV BUTTONS ── */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--gmu-green);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: background .18s, transform .14s;
+      box-shadow: 0 4px 14px rgba(0,102,51,.25);
+    }
+    .btn-primary:hover { background: #004422; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gmu-green);
+      border: 2px solid var(--gmu-green);
+      text-decoration: none;
+      padding: 11px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: background .18s, color .18s;
+    }
+    .btn-outline:hover { background: var(--gmu-green); color: #fff; }
+
+    /* ── QUICK LINKS CARD ── */
+    .quick-card {
+      background: #fff;
+      border: 0.5px solid #d4e2d9;
+      border-top: 4px solid var(--gmu-green);
+      border-radius: 10px;
+      padding: 22px 28px;
+      margin-top: 40px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 2px 14px rgba(0,102,51,.08);
+      text-align: left;
+    }
+    .quick-card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gmu-green);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--gmu-yellow);
+    }
+    .quick-links { list-style: none; padding: 0; }
+    .quick-links li { margin-bottom: 10px; }
+    .quick-links a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--gmu-green);
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 500;
+      padding: 7px 10px;
+      border-radius: 6px;
+      transition: background .15s;
+    }
+    .quick-links a:hover { background: #e8f5ee; }
+    .quick-links .icon {
+      width: 26px; height: 26px;
+      background: var(--gmu-yellow);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gmu-green);
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 18px 16px;
+      font-size: .84rem;
+    }
+    footer strong { color: var(--gmu-yellow); }
+  </style>
+</head>
+<body>
+
+  <!-- GMU top bar -->
+  <div class="gmu-topbar">
+    <span class="badge-gmu">GMU</span>
+    <span>George Mason University &mdash; Volgenau School of Engineering</span>
+  </div>
+
+  <!-- Error content -->
+  <div class="error-wrap">
+
+    <div class="error-code">404</div>
+
+    <h1 class="error-title">Page Not Found</h1>
+
+    <p class="error-msg">
+      Oops! The page you're looking for doesn't exist or may have been moved.
+      Try heading back to the <span class="gmu-highlight">homepage</span> or
+      use the links below to find what you need.
+    </p>
+
+    <div class="btn-group">
+      <a href="index.html" class="btn-primary">← Back to Homepage</a>
+      <a href="cs-department.html" class="btn-outline">CS Department</a>
+    </div>
+
+    <!-- Quick links card -->
+    <div class="quick-card">
+      <h2>Quick Links</h2>
+      <ul class="quick-links">
+        <li>
+          <a href="index.html">
+            <span class="icon">🏠</span> Student Homepage
+          </a>
+        </li>
+        <li>
+          <a href="cs-department.html">
+            <span class="icon">🎓</span> CS Department Info
+          </a>
+        </li>
+        <li>
+          <a href="survey.html">
+            <span class="icon">📋</span> Campus Survey Form
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2025 <strong>Chetana Patel</strong> &bull; George Mason University &bull; SWE 642 Web Application Development</p>
+  </footer>
+
+</body>
+</html>

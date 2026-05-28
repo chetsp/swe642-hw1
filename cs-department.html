@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CS Department – George Mason University</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <!-- Google Fonts -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@300;400;600&display=swap"/>
+
+  <style>
+    /* ── VARIABLES & BASE ── */
+    :root {
+      --gmu-green:  #006633;
+      --gmu-yellow: #FFCC33;
+      --light-gray: #f2f4f3;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background-color: var(--light-gray);
+      color: #222;
+    }
+
+    /* ── h1 rule required by assignment ── */
+    h1 { color: var(--gmu-green); }
+
+    /* ── Custom class usable on any element ── */
+    .gmu-highlight {
+      background: var(--gmu-yellow);
+      color: var(--gmu-green);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    /* ── TOP BAR ── */
+    .gmu-topbar {
+      background: var(--gmu-green);
+      color: #fff;
+      padding: 9px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .gmu-topbar .badge-gmu {
+      background: var(--gmu-yellow);
+      color: var(--gmu-green);
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: .85rem;
+      letter-spacing: .04em;
+    }
+
+    /* ── HEADING BOX (assignment: 5px green border, box-shadow) ── */
+    .heading-box {
+      border: 5px solid var(--gmu-green);
+      box-shadow: 6px 6px 0px var(--gmu-yellow), 8px 8px 0px var(--gmu-green);
+      background: #fff;
+      padding: 28px 36px;
+      margin: 32px auto;
+      max-width: 900px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .heading-box h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 6px;
+    }
+    .heading-box p {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar-gmu {
+      background: var(--gmu-yellow) !important;
+      border-bottom: 3px solid var(--gmu-green);
+    }
+    .navbar-gmu .nav-link {
+      color: var(--gmu-green) !important;
+      font-weight: 600;
+    }
+    .navbar-gmu .nav-link:hover,
+    .navbar-gmu .nav-link.active {
+      background: var(--gmu-green) !important;
+      color: #fff !important;
+      border-radius: 4px;
+    }
+    .navbar-gmu .navbar-brand {
+      color: var(--gmu-green) !important;
+      font-weight: 800;
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── SECTION CARDS ── */
+    .section-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 32px;
+      margin-bottom: 28px;
+      box-shadow: 0 2px 14px rgba(0,102,51,.09);
+      border-left: 5px solid var(--gmu-green);
+    }
+    .section-card h2 {
+      color: var(--gmu-green);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gmu-yellow);
+    }
+    .section-card h3 {
+      color: var(--gmu-green);
+      font-size: 1.1rem;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+
+    /* ── TABLES ── */
+    .table thead {
+      background: var(--gmu-green);
+      color: #fff;
+    }
+    .table-striped > tbody > tr:nth-of-type(odd) > * {
+      background-color: #e8f5ee;
+    }
+    .table-bordered { border-color: #c8ddd2; }
+
+    /* ── MS DEGREE LIST ── */
+    .degree-list { padding-left: 0; list-style: none; }
+    .degree-list li {
+      padding: 8px 12px;
+      margin-bottom: 6px;
+      border-left: 4px solid var(--gmu-yellow);
+      background: #f9fafb;
+      border-radius: 0 6px 6px 0;
+      font-weight: 500;
+    }
+
+    /* ── SURVEY LINK BUTTON ── */
+    .survey-cta {
+      background: var(--gmu-green);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 4px 12px rgba(0,102,51,.3);
+    }
+    .survey-cta:hover {
+      background: #004422;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background: var(--gmu-green);
+      color: rgba(255,255,255,.8);
+      text-align: center;
+      padding: 20px;
+      font-size: .88rem;
+      margin-top: 50px;
+    }
+    footer strong { color: var(--gmu-yellow); }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="gmu-topbar">
+    <span class="badge-gmu">GMU</span>
+    <span>George Mason University &mdash; Volgenau School of Engineering</span>
+  </div>
+
+  <!-- Bootstrap Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-gmu px-3">
+    <a class="navbar-brand" href="index.html">SWE 642</a>
+    <button class="navbar-toggler" type="button"
+      data-bs-toggle="collapse" data-bs-target="#mainNav"
+      aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="cs-department.html">CS Department</a></li>
+        <li class="nav-item"><a class="nav-link" href="survey.html">Campus Survey</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Heading Box -->
+  <div class="heading-box">
+    <h1>Department of Computer Science</h1>
+    <p>George Mason University &bull; Volgenau School of Engineering &bull; Fairfax, Virginia</p>
+  </div>
+
+  <div class="container" style="max-width:900px;">
+
+    <!-- Department Description -->
+    <div class="section-card" id="about">
+      <h2>About the Department</h2>
+      <p>The <span class="gmu-highlight">Department of Computer Science</span> at George Mason University is one of the largest and most diverse CS departments in the United States. Our faculty are internationally recognized researchers who push the boundaries of knowledge in areas ranging from artificial intelligence and machine learning to cybersecurity, bioinformatics, and high-performance computing. We pride ourselves on translating research breakthroughs into real-world solutions that benefit society.</p>
+      <p class="mt-3">Located in the heart of the Northern Virginia technology corridor home to some of the world's leading technology companies and federal agencies GMU CS students enjoy unparalleled access to internship opportunities, industry collaborations, and cutting-edge research facilities. With over 2,000 undergraduate and graduate students, our department fosters an inclusive, innovative community dedicated to academic excellence and professional growth.</p>
+    </div>
+
+    <!-- MS Degrees List -->
+    <div class="section-card" id="degrees">
+      <h2>Master of Science Degree Programs</h2>
+      <p class="mb-3">The department offers the following graduate MS degree programs:</p>
+      <ul class="degree-list">
+        <li>🎓 M.S. in Computer Science</li>
+        <li>🎓 M.S. in Software Engineering</li>
+        <li>🎓 M.S. in Information Systems</li>
+        <li>🎓 M.S. in Computer Science – Data Analytics Engineering (joint with SEOR)</li>
+        <li>🎓 M.S. in Cybersecurity Engineering</li>
+        <li>🎓 M.S. in Artificial Intelligence</li>
+      </ul>
+    </div>
+
+    <!-- Required Courses Tables -->
+    <div class="section-card" id="courses">
+      <h2>Required Courses by MS Program</h2>
+
+      <h3>M.S. in Computer Science</h3>
+      <table class="table table-bordered table-striped table-hover mb-4">
+        <thead>
+          <tr><th>Course Number</th><th>Course Name</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>CS 583</td><td>Analysis of Algorithms</td></tr>
+          <tr><td>CS 531</td><td>Computer Systems and Systems Programming</td></tr>
+          <tr><td>CS 540</td><td>Language Processors</td></tr>
+          <tr><td>CS 550</td><td>Database Systems</td></tr>
+          <tr><td>CS 571</td><td>Operating Systems</td></tr>
+        </tbody>
+      </table>
+
+      <h3>M.S. in Software Engineering</h3>
+      <table class="table table-bordered table-striped table-hover mb-4">
+        <thead>
+          <tr><th>Course Number</th><th>Course Name</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>SWE 619</td><td>Object-Oriented Software Specification and Construction</td></tr>
+          <tr><td>SWE 621</td><td>Software Modeling and Architectural Design</td></tr>
+          <tr><td>SWE 622</td><td>Distributed Software Engineering</td></tr>
+          <tr><td>SWE 632</td><td>User Interface Design and Development</td></tr>
+          <tr><td>SWE 642</td><td>Software Engineering for the World Wide Web</td></tr>
+        </tbody>
+      </table>
+
+      <h3>M.S. in Information Systems</h3>
+      <table class="table table-bordered table-striped table-hover mb-4">
+        <thead>
+          <tr><th>Course Number</th><th>Course Name</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>INFS 612</td><td>Principles and Practices of Communication Networks</td></tr>
+          <tr><td>INFS 614</td><td>Database Management</td></tr>
+          <tr><td>INFS 622</td><td>Systems Analysis and Design</td></tr>
+          <tr><td>INFS 740</td><td>Database Programming for the World Wide Web</td></tr>
+          <tr><td>CS 583</td><td>Analysis of Algorithms</td></tr>
+        </tbody>
+      </table>
+
+      <h3>M.S. in Cybersecurity Engineering</h3>
+      <table class="table table-bordered table-striped table-hover mb-4">
+        <thead>
+          <tr><th>Course Number</th><th>Course Name</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>CS 571</td><td>Operating Systems</td></tr>
+          <tr><td>CYSE 600</td><td>Foundations of Cybersecurity</td></tr>
+          <tr><td>CYSE 650</td><td>Network Security</td></tr>
+          <tr><td>CYSE 660</td><td>Malware Analysis and Reverse Engineering</td></tr>
+          <tr><td>CYSE 670</td><td>Cyber Forensics</td></tr>
+        </tbody>
+      </table>
+
+      <h3>M.S. in Artificial Intelligence</h3>
+      <table class="table table-bordered table-striped table-hover mb-4">
+        <thead>
+          <tr><th>Course Number</th><th>Course Name</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>CS 580</td><td>Introduction to Artificial Intelligence</td></tr>
+          <tr><td>CS 584</td><td>Theory and Applications of Data Mining</td></tr>
+          <tr><td>CS 678</td><td>Advanced Neural Networks</td></tr>
+          <tr><td>CS 688</td><td>Pattern Recognition</td></tr>
+          <tr><td>STAT 544</td><td>Applied Probability</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Survey CTA -->
+    <div class="section-card text-center" id="survey-link">
+      <h2>Visited Our Campus?</h2>
+      <p class="mb-4">We'd love to hear about your experience! Complete our prospective student survey and help us improve the campus visit experience.</p>
+      <a href="survey.html" class="survey-cta">📋 Complete the Campus Survey</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 <strong>George Mason University</strong> &bull; Department of Computer Science &bull; Fairfax, VA 22030</p>
+    <p><a href="index.html" style="color:var(--gmu-yellow)">← Back to Student Homepage</a></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

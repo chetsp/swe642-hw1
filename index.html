@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chetana Patel – SWE 642</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"/>
+
+  <style>
+    :root {
+      --gmu-green:  #006633;
+      --gmu-yellow: #FFCC33;
+      --light-gray: #f2f4f3;
+      --dark:       #0f1a14;
+      --card-bg:    #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--light-gray);
+      color: #1a2620;
+    }
+
+    /* ── h1 rule required by assignment ── */
+    h1 { color: var(--gmu-green); }
+
+    /* ── Custom reusable class ── */
+    .gmu-highlight {
+      background: var(--gmu-yellow);
+      color: var(--gmu-green);
+      padding: 1px 7px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    /* ── GMU TOP BAR ── */
+    .gmu-topbar {
+      background: var(--gmu-green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 28px;
+      font-size: .88rem;
+      letter-spacing: .02em;
+    }
+    .gmu-topbar .badge-gmu {
+      background: var(--gmu-yellow);
+      color: var(--gmu-green);
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: .82rem;
+      letter-spacing: .04em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(140deg, var(--gmu-green) 0%, #002d17 100%);
+      color: #fff;
+      padding: 56px 24px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* subtle diagonal stripe texture */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -55deg,
+        transparent,
+        transparent 22px,
+        rgba(255,204,51,.05) 22px,
+        rgba(255,204,51,.05) 23px
+      );
+      pointer-events: none;
+    }
+    /* yellow accent arc */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      border: 28px solid rgba(255,204,51,.15);
+      pointer-events: none;
+    }
+
+    .avatar-ring {
+      width: 144px; height: 144px;
+      border-radius: 50%;
+      border: 4px solid var(--gmu-yellow);
+      overflow: hidden;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.45);
+      position: relative; z-index: 1;
+    }
+    .avatar-ring img { width: 100%; height: 100%; object-fit: cover; }
+    .avatar-placeholder {
+      width: 100%; height: 100%;
+      background: #cde8d8;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 54px; color: var(--gmu-green);
+    }
+
+    .hero-eyebrow {
+      font-size: .78rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gmu-yellow);
+      margin-bottom: 8px;
+      position: relative; z-index: 1;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      position: relative; z-index: 1;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      max-width: 500px;
+      line-height: 1.6;
+      position: relative; z-index: 1;
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 8px;
+      margin-top: 18px;
+      position: relative; z-index: 1;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.88);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 500;
+    }
+
+    /* ── PILL NAV ── */
+    .pill-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      background: var(--gmu-yellow);
+      padding: 12px 20px;
+      border-bottom: 3px solid var(--gmu-green);
+    }
+    .pill-nav a {
+      background: var(--gmu-green);
+      color: #fff;
+      text-decoration: none;
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .03em;
+      transition: background .18s;
+    }
+    .pill-nav a:hover { background: #004422; }
+
+    /* ── GRID LAYOUT ── */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 980px;
+      margin: 36px auto;
+      padding: 0 20px;
+    }
+    @media(max-width: 660px) { .content-grid { grid-template-columns: 1fr; } }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 26px 28px;
+      box-shadow: 0 2px 16px rgba(0,102,51,.09);
+      border-top: 4px solid var(--gmu-green);
+    }
+    .card.full { grid-column: 1 / -1; }
+
+    .card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--gmu-green);
+      margin-bottom: 14px;
+      padding-bottom: 9px;
+      border-bottom: 2px solid var(--gmu-yellow);
+    }
+    .card p, .card li {
+      font-size: .95rem;
+      line-height: 1.72;
+      color: #3a4a40;
+    }
+    .card ul { padding-left: 18px; }
+    .card ul li { margin-bottom: 5px; }
+
+    /* ── SKILLS BARS ── */
+    .skill-row { margin-bottom: 11px; }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .83rem;
+      color: #556659;
+      margin-bottom: 4px;
+    }
+    .skill-bar {
+      background: #e8ede9;
+      border-radius: 999px;
+      height: 7px;
+    }
+    .skill-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gmu-green), #3baf72);
+    }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    .exp-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eef2ee; }
+    .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+    .exp-role { font-weight: 600; font-size: .97rem; color: #1a2620; }
+    .exp-company { font-weight: 700; color: var(--gmu-green); font-size: .97rem; }
+    .exp-date {
+      font-size: .78rem;
+      background: #e8f5ee;
+      color: var(--gmu-green);
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .exp-item ul { padding-left: 16px; margin-top: 6px; }
+    .exp-item ul li { font-size: .88rem; color: #4a5c4f; margin-bottom: 4px; line-height: 1.55; }
+
+    /* ── PROJECTS ── */
+    .project-item { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #eef2ee; }
+    .project-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .project-name { font-weight: 600; color: var(--gmu-green); font-size: .97rem; margin-bottom: 3px; }
+    .project-stack { font-size: .77rem; color: #7a8f80; font-style: italic; margin-bottom: 5px; }
+    .project-desc { font-size: .88rem; color: #4a5c4f; line-height: 1.58; }
+
+    /* ── CONTACT LIST ── */
+    .contact-list { list-style: none; padding: 0; }
+    .contact-list li {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 11px; font-size: .93rem; color: #3a4a40;
+    }
+    .contact-icon {
+      width: 30px; height: 30px;
+      background: var(--gmu-yellow);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0;
+    }
+    .contact-list a { color: var(--gmu-green); text-decoration: none; }
+    .contact-list a:hover { text-decoration: underline; }
+
+    /* ── TECH PILLS ── */
+    .tech-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tech-pill {
+      background: #e8f5ee;
+      color: var(--gmu-green);
+      border: 1px solid #b8ddc8;
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 500;
+    }
+
+    /* ── DEPT LINKS ── */
+    .dept-links { display: flex; flex-direction: column; gap: 10px; }
+    .dept-btn {
+      display: block;
+      background: var(--gmu-green);
+      color: #fff;
+      text-decoration: none;
+      padding: 13px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .93rem;
+      transition: background .18s, transform .14s;
+    }
+    .dept-btn:hover { background: #004422; transform: translateX(4px); color: #fff; }
+    .dept-btn span { float: right; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gmu-green);
+      color: rgba(255,255,255,.75);
+      text-align: center;
+      padding: 20px 16px;
+      font-size: .86rem;
+      margin-top: 40px;
+    }
+    footer strong { color: var(--gmu-yellow); }
+  </style>
+</head>
+<body>
+
+  <!-- GMU top bar -->
+  <div class="gmu-topbar">
+    <span class="badge-gmu">GMU</span>
+    <span>George Mason University &mdash; Volgenau School of Engineering</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="avatar-ring">
+      <img src="photo.jpg" alt="Chetana Patel profile photo"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+      <div class="avatar-placeholder" style="display:none;">👩‍💻</div>
+    </div>
+    <p class="hero-eyebrow">SWE 642 &bull; Web Application Development</p>
+    <h1>Chetana Patel</h1>
+    <p class="hero-sub">
+      Graduate Student &mdash; MS Computer Science (Machine Learning) at George Mason University.<br/>
+      Senior Software Engineer with 8+ years building distributed systems, HPC frameworks, and cloud-native solutions.
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">Python &amp; Go</span>
+      <span class="hero-tag">Distributed Systems</span>
+      <span class="hero-tag">Machine Learning</span>
+      <span class="hero-tag">AWS &amp; GCP</span>
+      <span class="hero-tag">Kafka &amp; Microservices</span>
+    </div>
+  </section>
+
+  <!-- Nav pills -->
+  <nav class="pill-nav" aria-label="Page sections">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+    <a href="cs-department.html">CS Department</a>
+    <a href="survey.html">Campus Survey</a>
+  </nav>
+
+  <!-- Content -->
+  <main class="content-grid">
+
+    <!-- About -->
+    <div class="card" id="about">
+      <h2>About Me</h2>
+      <p>Hi! I'm <strong>Chetana Patel</strong>, a graduate student in the <span class="gmu-highlight">MS Computer Science</span> program (Machine Learning concentration) at George Mason University, expected to graduate in 2027. I also serve as a Graduate Grader for CS 530, where I design assignments, grade coursework, and mentor students on algorithms and complexity analysis.</p>
+      <br/>
+      <p>Prior to GMU, I spent 8 years as a Software Engineer at <strong>Bank of America</strong>, where I built high-performance distributed systems processing millions of financial calculations daily. I'm currently interning at <strong>Tesla</strong> this summer, architecting secure and reliable software solutions for cross-functional engineering teams. I'm passionate about turning complex engineering challenges into elegant, scalable systems.</p>
+    </div>
+
+    <!-- Contact -->
+    <div class="card" id="contact">
+      <h2>Contact &amp; Links</h2>
+      <ul class="contact-list">
+        <li><span class="contact-icon">✉</span><a href="mailto:cpatel9@gmu.edu">cpatel9@gmu.edu</a></li>
+        <li><span class="contact-icon">🔗</span><a href="https://linkedin.com/in/chetanapatel" target="_blank">LinkedIn Profile</a></li>
+        <li><span class="contact-icon">💻</span><a href="https://github.com/chetsp" target="_blank">github.com/chetsp</a></li>
+        <li><span class="contact-icon">📍</span>Fairfax, Virginia</li>
+        <li><span class="contact-icon">🎓</span>GMU Graduate Grader — CS 530</li>
+      </ul>
+    </div>
+
+    <!-- Experience (full width) -->
+    <div class="card full" id="experience">
+      <h2>Professional Experience</h2>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Tesla</div>
+            <div class="exp-role">Software Engineering Intern <em style="font-size:.8rem; color:#7a8f80;">(current)</em></div>
+          </div>
+          <span class="exp-date">Summer 2026</span>
+        </div>
+        <ul>
+          <li>Currently collaborating with cross-functional teams to architect robust, secure, and reliable software solutions leveraging enterprise engineering best practices.</li>
+          <li>Mastered internal workflows and development tools within the first week to begin contributing to core codebases immediately.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">George Mason University</div>
+            <div class="exp-role">Graduate Grader — CS 530</div>
+          </div>
+          <span class="exp-date">Spring 2026</span>
+        </div>
+        <ul>
+          <li>Designed comprehensive homework assignments and interactive class exercises; attended all lectures for real-time student support.</li>
+          <li>Conducted weekly office hours mentoring students on mathematical proofs, complexity analysis, and algorithmic structures.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Bank of America</div>
+            <div class="exp-role">Senior Software Engineer</div>
+          </div>
+          <span class="exp-date">2022 – 2025</span>
+        </div>
+        <ul>
+          <li>Designed a distributed Python-based HPC framework across Linux clusters processing 15M+ calculations/day, cutting runtime by <strong>66%</strong>.</li>
+          <li>Redesigned a real-time event-driven microservices system processing 10M+ financial contracts/day, reducing margin call delivery time by <strong>6 hours</strong>.</li>
+          <li>Built a scalable Kafka-based event streaming service to replace legacy messaging, delivering <strong>85% faster performance</strong> and saving <strong>$800K</strong> in annual infrastructure costs.</li>
+          <li>Implemented AWS &amp; GCP cloud solutions with Docker-based CI/CD pipelines, accelerating deployments by <strong>40%</strong>.</li>
+          <li>Built a distributed task scheduling system in Go + Python, improving task throughput by <strong>~52%</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Bank of America</div>
+            <div class="exp-role">Software Engineer I &amp; II</div>
+          </div>
+          <span class="exp-date">2017 – 2022</span>
+        </div>
+        <ul>
+          <li>Built a custom Python interpreter using <code>concurrent.futures</code> to process 1M+ call logs in under 10 seconds, reducing manual effort by <strong>72%</strong>.</li>
+          <li>Designed a Python multiprocessing framework for API load testing of 3,000+ API calls, saving ~<strong>450 engineering hours</strong>.</li>
+          <li>Developed real-time monitoring dashboards in Java + Grafana, reducing system downtime by <strong>70%</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="card" id="skills">
+      <h2>Technical Skills</h2>
+
+      <div class="skill-row">
+        <div class="skill-label"><span>Python / Go / Java</span><span>95%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label"><span>Distributed Systems / Kafka</span><span>92%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label"><span>AWS / GCP / Docker / Kubernetes</span><span>88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label"><span>Machine Learning / PyTorch / TensorFlow</span><span>82%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label"><span>SQL / NoSQL / PostgreSQL / MongoDB</span><span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label"><span>HTML / CSS / Web Development</span><span>78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+
+      <br/>
+      <p style="font-size:.83rem; color:#7a8f80; margin-bottom:10px;">Full stack</p>
+      <div class="tech-cloud">
+        <span class="tech-pill">Flask</span><span class="tech-pill">Django</span>
+        <span class="tech-pill">FastAPI</span><span class="tech-pill">REST</span>
+        <span class="tech-pill">gRPC</span><span class="tech-pill">Spark</span>
+        <span class="tech-pill">NumPy</span><span class="tech-pill">Pandas</span>
+        <span class="tech-pill">Scikit-Learn</span><span class="tech-pill">PyTest</span>
+        <span class="tech-pill">Git</span><span class="tech-pill">GitHub Actions</span>
+        <span class="tech-pill">Linux</span><span class="tech-pill">C/C++</span>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="card" id="projects">
+      <h2>Projects</h2>
+
+      <div class="project-item">
+        <div class="project-name">LLM-Based Code Evaluation Benchmark</div>
+        <div class="project-stack">Python, GPT-4o, Claude Opus, Gemini Pro, HumanEval-X</div>
+        <p class="project-desc">Automated evaluation pipeline benchmarking state-of-the-art LLMs across correctness, readability, and efficiency. Chain-of-Thought prompting improved correctness by <strong>14.6%</strong> and reduced runtime by over <strong>100×</strong> (1.2s → 0.01s).</p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-name">Distributed Real-Time Video Analytics Pipeline</div>
+        <div class="project-stack">Kafka, Spark, PyTorch, AWS S3 / Redshift</div>
+        <p class="project-desc">Scalable system processing multiple concurrent camera streams with PyTorch inference workers integrated into Kafka–Spark pipelines, delivering structured traffic analytics to AWS S3/Redshift.</p>
+      </div>
+
+      <div class="project-item">
+        <div class="project-name">Predictive Financial Compliance Engine</div>
+        <div class="project-stack">Python, Pandas, Scikit-Learn, REST API</div>
+        <p class="project-desc">ML-driven system flagging suspicious transactions with <strong>92% accuracy</strong>, deployed via REST API for real-time monitoring, cutting manual reviews by <strong>60%</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Education (full width) -->
+    <div class="card full" id="education">
+      <h2>Education</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div>
+          <p><strong style="color:var(--gmu-green);">George Mason University</strong> &mdash; Fairfax, VA</p>
+          <p>MS in Computer Science &mdash; <em>Machine Learning Concentration</em></p>
+          <p style="font-size:.85rem; color:#7a8f80;">Expected May 2027</p>
+          <p style="font-size:.88rem; margin-top:6px; color:#4a5c4f;">Current role: Graduate Grader, CS 530 &mdash; Algorithm Design &amp; Analysis</p>
+        </div>
+        <div>
+          <p><strong style="color:var(--gmu-green);">Veermata Jijabai Technological Institute</strong> &mdash; Mumbai, India</p>
+          <p>BTech in Computer Engineering</p>
+          <p style="font-size:.85rem; color:#7a8f80;">Graduated 2017</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assignment Links (full width) -->
+    <div class="card full">
+      <h2>Assignment Links</h2>
+      <div class="dept-links">
+        <a class="dept-btn" href="cs-department.html">CS Department Information Page <span>→</span></a>
+        <a class="dept-btn" href="survey.html">CS Department Campus Survey Form <span>→</span></a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 <strong>Chetana Patel</strong> &bull; George Mason University &bull; SWE 642 Web Application Development</p>
+  </footer>
+
+</body>
+</html>
