@@ -1,3 +1,14 @@
+<!--
+  ============================================================
+  Student  : Chetana Patel
+  G-Number : G-01583935
+  Course   : SWE 642 – Software Engineering for the World Wide Web
+  File     : survey.html
+  Purpose  : Part 2 – CS Department Campus Survey Form
+             HTML5 form with Bootstrap validation, autocomplete,
+             checkboxes, radio buttons, datalist, and dropdown
+  ============================================================
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -178,13 +189,13 @@
 </head>
 <body>
 
-  <!-- Top bar -->
+  <!-- ===== GMU Top Bar: University branding strip ===== -->
   <div class="gmu-topbar">
     <span class="badge-gmu">GMU</span>
     <span>George Mason University &mdash; Department of Computer Science</span>
   </div>
 
-  <!-- Navbar -->
+  <!-- ===== Bootstrap Navbar: Responsive navigation menu ===== -->
   <nav class="navbar navbar-expand-lg navbar-gmu px-3">
     <a class="navbar-brand" href="index.html">SWE 642</a>
     <button class="navbar-toggler" type="button"
@@ -200,7 +211,7 @@
     </div>
   </nav>
 
-  <!-- Heading Box -->
+  <!-- ===== Heading Box: 5px green border + box-shadow (required by assignment) ===== -->
   <div class="heading-box">
     <h1>CS Department Campus Survey</h1>
     <p>Thank you for visiting George Mason University! Please share your feedback below.</p>
@@ -209,7 +220,7 @@
   <div class="container" style="max-width:860px;">
     <div class="form-card">
 
-      <!-- Required field legend -->
+      <!-- ===== Required Field Legend: Visual indicator for required fields ===== -->
       <p class="req-legend">Fields marked with <span class="req-star">*</span> are required.</p>
 
       <!--
@@ -218,7 +229,7 @@
       -->
       <form id="surveyForm" autocomplete="on" novalidate>
 
-        <!-- ── SECTION 1: Personal Information ── -->
+        <!-- ===== Section 1: Personal Info – text/email/tel/url/date inputs ===== -->
         <h2 class="form-section-title">Personal Information</h2>
 
         <div class="row g-3">
@@ -370,7 +381,7 @@
 
         </div><!-- /row -->
 
-        <!-- ── SECTION 2: High School Graduation ── -->
+        <!-- ===== Section 2: Graduation – datalist month + year field (required by assignment) ===== -->
         <h2 class="form-section-title">High School Graduation</h2>
 
         <div class="row g-3">
@@ -417,7 +428,7 @@
           </div>
         </div>
 
-        <!-- ── SECTION 3: Campus Impressions (Checkboxes) ── -->
+        <!-- ===== Section 3: Checkboxes – students/location/campus/atmosphere/dorm/sports (required by assignment) ===== -->
         <h2 class="form-section-title">What Did You Like Most? <small class="text-muted" style="font-size:.8rem;">(select all that apply)</small></h2>
 
         <div class="row g-2">
@@ -489,7 +500,7 @@
           </div>
         </div>
 
-        <!-- ── SECTION 5: Recommendation Likelihood ── -->
+        <!-- ===== Section 5: Dropdown – Very Likely/Likely/Unlikely (required by assignment) ===== -->
         <h2 class="form-section-title">Likelihood of Recommending GMU</h2>
 
         <div class="row g-3">
@@ -506,7 +517,7 @@
           </div>
         </div>
 
-        <!-- ── SECTION 6: Additional Comments ── -->
+        <!-- ===== Section 6: Textarea for comments + Submit button ===== -->
         <h2 class="form-section-title">Additional Comments</h2>
 
         <div class="mb-3">
@@ -522,7 +533,7 @@
           ></textarea>
         </div>
 
-        <!-- ── BUTTONS ── -->
+        <!-- ===== Form Buttons: Submit and Reset ===== -->
         <hr class="my-4"/>
         <div class="d-flex gap-3 flex-wrap">
           <button type="submit" class="btn-gmu">Submit Survey</button>

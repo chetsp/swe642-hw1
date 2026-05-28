@@ -1,9 +1,19 @@
+<!--
+  ============================================================
+  Student  : Chetana Patel
+  G-Number : G-01583935
+  Course   : SWE 642 – Software Engineering for the World Wide Web
+  File     : index.html
+  Purpose  : Part 1 – Student personal homepage
+             Built using W3.CSS template with GMU color scheme
+  ============================================================
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chetana Patel – SWE 642</title>
+  <title>Chetana Patel</title>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"/>
@@ -313,17 +323,17 @@
 </head>
 <body>
 
-  <!-- GMU top bar -->
+  <!-- ===== GMU Top Bar: University branding strip ===== -->
   <div class="gmu-topbar">
     <span class="badge-gmu">GMU</span>
     <span>George Mason University &mdash; Volgenau School of Engineering</span>
   </div>
 
-  <!-- Hero -->
+  <!-- ===== Profile Section: Profile photo, name, and tagline ===== -->
   <section class="hero">
     <div class="avatar-ring">
       <img src="photo.jpg" alt="Chetana Patel profile photo"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; console.log('photo.jpg not found — check filename and location')"/>
       <div class="avatar-placeholder" style="display:none;">👩‍💻</div>
     </div>
     <p class="hero-eyebrow">SWE 642 &bull; Web Application Development</p>
@@ -341,7 +351,7 @@
     </div>
   </section>
 
-  <!-- Nav pills -->
+  <!-- ===== Navigation Pills: Links to all page sections ===== -->
   <nav class="pill-nav" aria-label="Page sections">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
@@ -353,10 +363,10 @@
     <a href="survey.html">Campus Survey</a>
   </nav>
 
-  <!-- Content -->
+  <!-- ===== Main Content Grid: Cards layout using CSS grid ===== -->
   <main class="content-grid">
 
-    <!-- About -->
+    <!-- Card: About Me bio -->
     <div class="card" id="about">
       <h2>About Me</h2>
       <p>Hi! I'm <strong>Chetana Patel</strong>, a graduate student in the <span class="gmu-highlight">MS Computer Science</span> program (Machine Learning concentration) at George Mason University, expected to graduate in 2027. I also serve as a Graduate Grader for CS 530, where I design assignments, grade coursework, and mentor students on algorithms and complexity analysis.</p>
@@ -364,19 +374,19 @@
       <p>Prior to GMU, I spent 8 years as a Software Engineer at <strong>Bank of America</strong>, where I built high-performance distributed systems processing millions of financial calculations daily. I'm currently interning at <strong>Tesla</strong> this summer, architecting secure and reliable software solutions for cross-functional engineering teams. I'm passionate about turning complex engineering challenges into elegant, scalable systems.</p>
     </div>
 
-    <!-- Contact -->
+    <!-- Card: Contact and social links -->
     <div class="card" id="contact">
       <h2>Contact &amp; Links</h2>
       <ul class="contact-list">
         <li><span class="contact-icon">✉</span><a href="mailto:cpatel9@gmu.edu">cpatel9@gmu.edu</a></li>
-        <li><span class="contact-icon">🔗</span><a href="https://linkedin.com/in/chetanapatel" target="_blank">LinkedIn Profile</a></li>
-        <li><span class="contact-icon">💻</span><a href="https://github.com/chetsp" target="_blank">github.com/chetsp</a></li>
+        <li><span class="contact-icon">🔗</span><a href="https://www.linkedin.com/in/cschetanapatel/" target="_blank">LinkedIn Profile</a></li>
+        <li><span class="contact-icon">💻</span><a href="https://github.com/chetsp" target="_blank">GitHub Profile</a></li>
         <li><span class="contact-icon">📍</span>Fairfax, Virginia</li>
         <li><span class="contact-icon">🎓</span>GMU Graduate Grader — CS 530</li>
       </ul>
     </div>
 
-    <!-- Experience (full width) -->
+    <!-- Card: Full-width professional experience timeline -->
     <div class="card full" id="experience">
       <h2>Professional Experience</h2>
 
@@ -441,7 +451,7 @@
       </div>
     </div>
 
-    <!-- Skills -->
+    <!-- Card: Technical skills with progress bars and tech pills -->
     <div class="card" id="skills">
       <h2>Technical Skills</h2>
 
@@ -483,7 +493,7 @@
       </div>
     </div>
 
-    <!-- Projects -->
+    <!-- Card: Research and engineering projects -->
     <div class="card" id="projects">
       <h2>Projects</h2>
 
@@ -506,7 +516,7 @@
       </div>
     </div>
 
-    <!-- Education (full width) -->
+    <!-- Card: Full-width education history -->
     <div class="card full" id="education">
       <h2>Education</h2>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
@@ -524,7 +534,7 @@
       </div>
     </div>
 
-    <!-- Assignment Links (full width) -->
+    <!-- Card: Assignment navigation links (required by assignment) -->
     <div class="card full">
       <h2>Assignment Links</h2>
       <div class="dept-links">

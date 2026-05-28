@@ -102,3 +102,6 @@ The site is hosted as a static website on Amazon S3 (free tier):
 - **Error document:** `error.html`
 - **Live URL:** http://swe642-hw1-chets.s3-website.us-east-2.amazonaws.com/
 
+---
+
+*George Mason University · Volgenau School of Engineering · SWE 642 · 2025*

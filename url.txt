@@ -1,0 +1,16 @@
+SWE 642 – Assignment 1
+Student: Chetana Patel
+Email: cpatel9@gmu.edu
+GMU ID: G-01583935
+========================================
+LIVE SITE (AWS S3):
+http://swe642-hw1-chets.s3-website.us-east-2.amazonaws.com/
+
+GITHUB REPOSITORY:
+https://github.com/chetsp/swe642-hw1
+
+INDIVIDUAL PAGES:
+Homepage:       http://swe642-hw1-chets.s3-website.us-east-2.amazonaws.com/index.html
+CS Department:  http://swe642-hw1-chets.s3-website.us-east-2.amazonaws.com/cs-department.html
+Survey Form:    http://swe642-hw1-chets.s3-website.us-east-2.amazonaws.com/survey.html
+========================================
